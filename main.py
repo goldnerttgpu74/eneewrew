@@ -46,7 +46,7 @@ if 'chunk_size' not in st.session_state:
 if 'chunk_overlap' not in st.session_state:
     st.session_state['chunk_overlap'] = 0
 if 'max_tokens' not in st.session_state:
-    st.session_state['max_tokens'] = 256
+    st.session_state['max_tokens'] = 1024
 
 # Create a radio button for user to choose between adding knowledge or asking a question
 user_choice = st.radio(
@@ -74,7 +74,7 @@ elif user_choice == 'Chat with your Brain':
     st.session_state['temperature'] = st.sidebar.slider(
         "Select Temperature", 0.0, 1.0, st.session_state['temperature'], 0.1)
     st.session_state['max_tokens'] = st.sidebar.slider(
-        "Select Max Tokens", 256, 2048, st.session_state['max_tokens'], 2048)
+        "Select Max Tokens", 256, 2048, st.session_state['max_tokens'], 256)
     chat_with_doc(st.session_state['model'], vector_store)
 elif user_choice == 'Forget':
     st.sidebar.title("Configuration")
